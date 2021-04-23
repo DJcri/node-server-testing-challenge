@@ -7,16 +7,16 @@ describe("server", () => {
       const res = await request(server).get("/api/data");
       expect(res.status).toBe(200);
     });
-    it("returns dummy", async () => {
+    it("returns dummy with name of Deavy", async () => {
       let res;
       res = await request(server).get("/api/data");
-      expect(res.body).toHaveLength(1);
+      expect(res.body.name).toEqual("Deavy");
     });
   });
   describe("[POST] /api/skills", () => {
     it("resopnds with added skill", async () => {
       let res;
-      res = await request(server).post("/api/skills").send("React");
+      res = await request(server).post("/api/skills").send({ skill: "React" });
       expect(res.body).toEqual("React");
     });
   });
